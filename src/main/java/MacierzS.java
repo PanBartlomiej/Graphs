@@ -46,21 +46,18 @@ ListaS toListS(){
         int a;
         int b;
 
-        while(true)
-        {
-            a = (int) (size0 * random.nextDouble());
+        do {
+            a =(int)( size0 * random.nextDouble());
             double p = random.nextDouble();
-            b = (int) (p * listaS.getMacierz().get(a).size());
-            if (a != b && listaS.getMacierz().get(a).get(b) != 0) break;
-        }
+           b = (int) (p * listaS.getMacierz().get(a).size());
+        }while(a!=b && listaS.getMacierz().get(a).get(b)!=0 );
         int c;
         int d;
-        while (true){
+        do {
             c =(int)( size0 * random.nextDouble());
             double p = random.nextDouble();
             d = (int) (p * listaS.getMacierz().get(c).size());
-        if(c!=d && listaS.getMacierz().get(c).get(d)!=0 && a!= c && b !=d ) break;
-        }
+        }while(c!=d && listaS.getMacierz().get(c).get(d)!=0 && a!=c);
         int tempo =  listaS.getMacierz().get(a).get(b);
         listaS.getMacierz().get(a).set(b,listaS.getMacierz().get(c).get(d));
         listaS.getMacierz().get(b).set(a,listaS.getMacierz().get(c).get(d));

@@ -144,7 +144,10 @@ public class MyFrame extends JFrame implements ActionListener {
                 panel.getGraphics().drawString("Podany ciag nie jest graficzny",20,20);}
         }
         if(e.getSource()==randomizujGraf){
-            MacierzS macierzS = MacierzS.randomizuj((MacierzS) graf);
+
+            MacierzS macierzS =null;
+            for(int i=0; i<10; i++)
+            macierzS = MacierzS.randomizuj((MacierzS) graf);
             graf= macierzS;
             panel.drawGraf(graf);
         }
