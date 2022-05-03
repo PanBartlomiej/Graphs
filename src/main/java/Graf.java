@@ -3,7 +3,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public abstract class Graf {
+public class Graf {
 
     ArrayList<ArrayList<Integer>> macierz = new ArrayList<ArrayList<Integer>>();
 

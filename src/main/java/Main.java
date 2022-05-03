@@ -9,8 +9,8 @@ public class Main {
 
         MyFrame frame = new MyFrame();
 
-        frame.graf = GenerujGraf.Generuj(10,2) ;
-        frame.graf.wypisz();
+        frame.graf = GenerujGraf.Generuj(10,2);
+        System.out.println(frame.graf);
         assert (frame.graf != null);
 
 
