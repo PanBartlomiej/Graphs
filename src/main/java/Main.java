@@ -9,7 +9,7 @@ public class Main {
 
         MyFrame frame = new MyFrame();
 
-        frame.graf = new GenerujGraf(10,2).macierzS ;
+        frame.graf = GenerujGraf.Generuj(10,2) ;
         frame.graf.wypisz();
         assert (frame.graf != null);
 

@@ -122,9 +122,9 @@ public class MyFrame extends JFrame implements ActionListener {
             int n = Integer.parseInt(liczbaKrawedzi.getText());
             double p =Double.parseDouble(pKrawedzi.getText());
             if(p<=1)
-            graf= (new GenerujGraf(n,p)).macierzS;
+            graf= (GenerujGraf.Generuj(n,p));
             else
-                graf= (new GenerujGraf(n,(int)p)).macierzS;
+                graf= (GenerujGraf.Generuj(n,(int)p));
             panel.drawGraf(graf);
         }
 
@@ -132,7 +132,7 @@ public class MyFrame extends JFrame implements ActionListener {
             Scanner scanner = new Scanner(ciagGraficzny.getText());
             ArrayList<Integer> tab =new ArrayList<>();
             while(scanner.hasNextInt())
-            tab.add(scanner.nextInt());
+                tab.add(scanner.nextInt());
             Integer [] tempo = tab.toArray(Integer[]::new);
             MacierzS macierzS;
             if(CiagGraficzny.czyGraficzny(tempo)) {
@@ -147,7 +147,7 @@ public class MyFrame extends JFrame implements ActionListener {
 
             MacierzS macierzS =null;
             for(int i=0; i<10; i++)
-            macierzS = MacierzS.randomizuj((MacierzS) graf);
+                macierzS = MacierzS.randomizuj((MacierzS) graf);
             graf= macierzS;
             panel.drawGraf(graf);
         }

@@ -1,10 +1,8 @@
 import java.util.Random;
 
 public class GenerujGraf {
-    MacierzS macierzS = new MacierzS();
 
-    GenerujGraf(int n, int l) {
-
+    public static MacierzS Generuj(int n, int l){
         if (l > (n - 1) * n / 2.0)
             throw new RuntimeException();
         double p = ((double) l / ((double) (n * (n - 1)) / 2.0));
@@ -14,7 +12,6 @@ public class GenerujGraf {
         Random r = new Random();
         int liczbaKrawedzi = 0;
         do {
-            liczbaKrawedzi = 0;
             for (int i = 0; i < n; i++)
                 for (int j = i; j < n; j++)
                     if (r.nextDouble() < p && i != j) {
@@ -30,12 +27,12 @@ public class GenerujGraf {
                     if (tab[i][j] == 1) liczbaKrawedzi++;
 
         } while (liczbaKrawedzi != l);
-
-        macierzS.wypisz();
+        MacierzS macierzS = new MacierzS();
         macierzS.uzupelnij(tab);
+        return macierzS;
     }
 
-    GenerujGraf(int n, double p) {
+    public static MacierzS Generuj(int n, double p){
         int[][] tab = new int[n][n];
         for (int i = 0; i < n; i++)
             tab[i] = new int[n];
@@ -50,7 +47,9 @@ public class GenerujGraf {
                     tab[i][j] = 0;
                     tab[j][i] = 0;
                 }
+        MacierzS macierzS = new MacierzS();
         macierzS.uzupelnij(tab);
+        return macierzS;
     }
 
 }
