@@ -19,23 +19,23 @@ public class MacierzI extends Graf {
             for(int j=0; j<vertices; j++)
                 macierzS.getMacierz().get(i).add(0);
         }
-        for (int edge = 0; edge < edges; ++edge) {
+        for (ArrayList<Integer> integers : macierz) {
             int a = -1, b = -1, vertex = 0;
             for (; vertex < vertices && a == -1; ++vertex) {
-                if (macierz.get(edge).get(vertex)!= 0) a = vertex;
+                if (integers.get(vertex) != 0) a = vertex;
             }
             for (; vertex < vertices && b == -1; ++vertex) {
-                if (macierz.get(edge).get(vertex)!= 0) b = vertex;
+                if (integers.get(vertex) != 0) b = vertex;
             }
             if (b == -1) b = a;
-            macierzS.getMacierz().get(a).set(b,1);
-            macierzS.getMacierz().get(b).set(a,1);
+            macierzS.getMacierz().get(a).set(b, 1);
+            macierzS.getMacierz().get(b).set(a, 1);
         }
 
         return macierzS;
     }
 
-    ListaS toListS(){
+    Graf toListS(){
      return this.toMacierzS().toListS();
     }
 

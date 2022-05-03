@@ -31,13 +31,13 @@ public class MyPanel extends JPanel {
         double r  = 200;
         Graphics2D graphics2D =(Graphics2D) this.getGraphics();
         int amount = graf.getMacierz().size();
-        ListaS lista;
+        Graf lista;
         if(graf instanceof MacierzS)
             lista=((MacierzS)graf).toListS();//.getMacierz();
         else if(graf instanceof MacierzI )
             lista=((MacierzI)graf).toListS();//.getMacierz();
         else
-            lista =(ListaS) graf;
+            lista = graf;
         lista.wypisz();
         for(int i=0 ; i<amount;i++)
         {

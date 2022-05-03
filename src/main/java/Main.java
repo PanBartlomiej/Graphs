@@ -10,7 +10,7 @@ public class Main {
         MyFrame frame = new MyFrame();
 
         frame.graf = GenerujGraf.Generuj(10,2);
-        System.out.println(frame.graf);
+        frame.graf.wypisz();
         assert (frame.graf != null);
 
 

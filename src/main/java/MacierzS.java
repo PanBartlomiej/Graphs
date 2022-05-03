@@ -5,9 +5,9 @@ import java.util.Random;
 // Macierz Sąsiedztwa
 public class MacierzS extends Graf {
 
-    ListaS toListS() {
+    Graf toListS() {
         // do roboty
-        ListaS listaS = new ListaS();
+        Graf listaS = new Graf();
 
         for (var linia : macierz) {
             ArrayList<Integer> tempo = new ArrayList<>();
@@ -40,32 +40,31 @@ public class MacierzS extends Graf {
      */
     static MacierzS randomizuj(MacierzS graf) {
 
-        MacierzS listaS = graf;
         Random random = new Random();
-        int size0 = listaS.getMacierz().size();
+        int size0 = graf.getMacierz().size();
         int a;
         int b;
 
         do {
             a = (int) (size0 * random.nextDouble());
             double p = random.nextDouble();
-            b = (int) (p * listaS.getMacierz().get(a).size());
-        } while (a != b && listaS.getMacierz().get(a).get(b) != 0);
+            b = (int) (p * graf.getMacierz().get(a).size());
+        } while (a != b && graf.getMacierz().get(a).get(b) != 0);
         int c;
         int d;
         do {
             c = (int) (size0 * random.nextDouble());
             double p = random.nextDouble();
-            d = (int) (p * listaS.getMacierz().get(c).size());
-        } while (c != d && listaS.getMacierz().get(c).get(d) != 0 && a != c);
-        int tempo = listaS.getMacierz().get(a).get(b);
-        listaS.getMacierz().get(a).set(b, listaS.getMacierz().get(c).get(d));
-        listaS.getMacierz().get(b).set(a, listaS.getMacierz().get(c).get(d));
+            d = (int) (p * graf.getMacierz().get(c).size());
+        } while (c != d && graf.getMacierz().get(c).get(d) != 0 && a != c);
+        int tempo = graf.getMacierz().get(a).get(b);
+        graf.getMacierz().get(a).set(b, graf.getMacierz().get(c).get(d));
+        graf.getMacierz().get(b).set(a, graf.getMacierz().get(c).get(d));
 
-        listaS.getMacierz().get(c).set(d, tempo);
-        listaS.getMacierz().get(d).set(c, tempo);
-        listaS.wypisz();
-        return listaS;
+        graf.getMacierz().get(c).set(d, tempo);
+        graf.getMacierz().get(d).set(c, tempo);
+        graf.wypisz();
+        return graf;
     }
 
     MacierzI toMacierzI() {
