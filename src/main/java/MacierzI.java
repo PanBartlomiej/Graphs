@@ -36,7 +36,7 @@ public class MacierzI extends Graf {
     }
 
     public static Graf toListS(Graf graf){
-     return MacierzI.toMacierzS(graf).toListS();
+     return MacierzS.toListS(MacierzI.toMacierzS(graf));
     }
 
 }

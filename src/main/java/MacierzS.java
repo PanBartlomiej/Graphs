@@ -5,11 +5,11 @@ import java.util.Random;
 // Macierz Sąsiedztwa
 public class MacierzS extends Graf {
 
-    Graf toListS() {
+    public static Graf toListS(Graf graf) {
         // do roboty
         Graf listaS = new Graf();
 
-        for (var linia : macierz) {
+        for (var linia : graf.macierz) {
             ArrayList<Integer> tempo = new ArrayList<>();
             for (int i = 0; i < linia.size(); i++) {
                 if (!linia.get(i).equals(0))
@@ -67,30 +67,29 @@ public class MacierzS extends Graf {
         return graf;
     }
 
-    MacierzI toMacierzI() {
-        MacierzI macierzI = new MacierzI();
-
-
-        int edgeNumber = 0;
-        ArrayList<ArrayList<Integer>> tempo = new ArrayList<>();
-
-        for (int i = 0; i < macierz.size(); i++) {
-            for (int j = 0; j <= i; j++) {
-
-                if (macierz.get(i).get(j) > 0) {
-                    System.out.println(edgeNumber);
-                    macierzI.getMacierz().add(new ArrayList<>());
-                    for (int k = 0; k < macierz.size(); k++)
-                        macierzI.getMacierz().get(edgeNumber).add(0);
-                    macierzI.getMacierz().get(edgeNumber).set(i, 1);
-                    macierzI.getMacierz().get(edgeNumber).set(j, 1);
-                    ++edgeNumber;
-                }
-
-            }
-        }
-
-        return macierzI;
-
-    }
+//    MacierzI toMacierzI() {
+//        MacierzI macierzI = new MacierzI();
+//
+//
+//        int edgeNumber = 0;
+//        ArrayList<ArrayList<Integer>> tempo = new ArrayList<>();
+//
+//        for (int i = 0; i < macierz.size(); i++) {
+//            for (int j = 0; j <= i; j++) {
+//
+//                if (macierz.get(i).get(j) > 0) {
+//                    System.out.println(edgeNumber);
+//                    macierzI.getMacierz().add(new ArrayList<>());
+//                    for (int k = 0; k < macierz.size(); k++)
+//                        macierzI.getMacierz().get(edgeNumber).add(0);
+//                    macierzI.getMacierz().get(edgeNumber).set(i, 1);
+//                    macierzI.getMacierz().get(edgeNumber).set(j, 1);
+//                    ++edgeNumber;
+//                }
+//
+//            }
+//        }
+//
+//        return macierzI;
+//    }
 }
