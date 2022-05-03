@@ -4,13 +4,13 @@ import java.util.ArrayList;
 public class MacierzI extends Graf {
 
 
-    MacierzS toMacierzS()
+    public static MacierzS toMacierzS(Graf graf)
     {
         MacierzS macierzS = new MacierzS();
-        int edges = macierz.size();
+        int edges = graf.macierz.size();
         assert(edges > 0);
 
-        int vertices = macierz.get(0).size();
+        int vertices = graf.macierz.get(0).size();
         assert(vertices > 0);
 
         for(int i=0;i<vertices; i++)
@@ -19,7 +19,7 @@ public class MacierzI extends Graf {
             for(int j=0; j<vertices; j++)
                 macierzS.getMacierz().get(i).add(0);
         }
-        for (ArrayList<Integer> integers : macierz) {
+        for (ArrayList<Integer> integers : graf.macierz) {
             int a = -1, b = -1, vertex = 0;
             for (; vertex < vertices && a == -1; ++vertex) {
                 if (integers.get(vertex) != 0) a = vertex;
@@ -35,8 +35,8 @@ public class MacierzI extends Graf {
         return macierzS;
     }
 
-    Graf toListS(){
-     return this.toMacierzS().toListS();
+    public static Graf toListS(Graf graf){
+     return MacierzI.toMacierzS(graf).toListS();
     }
 
 }

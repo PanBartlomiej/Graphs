@@ -35,7 +35,7 @@ public class MyPanel extends JPanel {
         if(graf instanceof MacierzS)
             lista=((MacierzS)graf).toListS();//.getMacierz();
         else if(graf instanceof MacierzI )
-            lista=((MacierzI)graf).toListS();//.getMacierz();
+            lista= MacierzI.toListS(graf);//.getMacierz();
         else
             lista = graf;
         lista.wypisz();
