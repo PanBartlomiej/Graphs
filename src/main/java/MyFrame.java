@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -22,6 +23,7 @@ public class MyFrame extends JFrame implements ActionListener {
     Button GenerujGrafSpojny = new Button("GenerujGrafSpojny");
     Button znajdźCyklHamiltona = new Button("znajdźCyklHamiltona");
     Button znajdźCyklEulera = new Button("znajdźCyklEulera");
+    Button znajdźSkładowe = new Button("znajdźSkładowe");
     JComboBox<String> comboBox = new JComboBox<>();
     JTextField liczbaKrawedzi;
     JTextField pKrawedzi;
@@ -110,10 +112,13 @@ public class MyFrame extends JFrame implements ActionListener {
         znajdźCyklHamiltona.addActionListener(this);
         this.add(znajdźCyklHamiltona);
 
-
         znajdźCyklEulera.setBounds(20,425,140,20);
         znajdźCyklEulera.addActionListener(this);
         this.add(znajdźCyklEulera);
+
+        znajdźSkładowe.setBounds(20,450,140,20);
+        znajdźSkładowe.addActionListener(this);
+        this.add(znajdźSkładowe);
     }
 
     @Override
@@ -186,8 +191,10 @@ public class MyFrame extends JFrame implements ActionListener {
                 graf = Algorytmy.generujGrafEulerowski(n);
                 panel.drawGraf(graf);
             }catch (RuntimeException ex){
+                panel.clean();
                 Graphics2D g =(Graphics2D) panel.getGraphics();
                 g.drawString(ex.toString(),20,20);
+                System.out.println(ex);
             }
         }
         if(e.getSource() == GenerujGrafKRegularny)
@@ -201,8 +208,10 @@ public class MyFrame extends JFrame implements ActionListener {
                     graf = Algorytmy.GenerujGrafKRegularny(n, (int) p);
                 panel.drawGraf(graf);
             }catch (RuntimeException ex){
+                panel.clean();
                 Graphics2D g =(Graphics2D) panel.getGraphics();
                 g.drawString(ex.toString(),20,20);
+                System.out.println(ex);
             }
         }
         if(e.getSource() == GenerujGrafSpojny)
@@ -216,22 +225,33 @@ public class MyFrame extends JFrame implements ActionListener {
             panel.drawGraf(graf);
         }catch (RuntimeException ex){
             Graphics2D g =(Graphics2D) panel.getGraphics();
-            g.drawString(ex.toString(),20,20);
-        }
-        }
-        if(e.getSource() == znajdźCyklHamiltona)
-        {
             panel.clean();
-            Graphics2D g =(Graphics2D) panel.getGraphics();
-            ArrayList<ArrayList<Integer>> macierz= graf.getMacierz();
-            ArrayList<Integer> list = new ArrayList<>();
-            int y=20;
-            if(graf != null) {
-              list = (ArrayList<Integer>) Algorytmy.znajdźCyklHamiltona(graf);
-                g.drawString(list.toString(),20,20);
+            g.drawString(ex.toString(),20,20);
+            System.out.println(ex);
+        }
+        }
+        if(e.getSource() == znajdźCyklHamiltona) {
+            try {
+
+
+                panel.clean();
+
+                Graphics2D g = (Graphics2D) panel.getGraphics();
+
+                if (graf != null) {
+                    ArrayList<Integer> list ;
+                    int y = 20;
+                    list = (ArrayList<Integer>)new ArrayList<Integer>( Algorytmy.znajdźCyklHamiltona(graf));
+                    g.drawString(list.toString(), 20, 20);
+                } else
+                    g.drawString("Nie wczytano grafu", 20, 20);
+
+            }catch (RuntimeException ex){
+                Graphics2D g =(Graphics2D) panel.getGraphics();
+                panel.clean();
+                g.drawString(ex.toString(),20,20);
+                System.out.println(ex);
             }
-            else
-                g.drawString("Nie wczytano grafu",20,20);
         }
 
         if(e.getSource() == znajdźCyklEulera)
@@ -239,20 +259,42 @@ public class MyFrame extends JFrame implements ActionListener {
             try {
                 panel.clean();
                 Graphics2D g =(Graphics2D) panel.getGraphics();
-                ArrayList<ArrayList<Integer>> macierz= graf.getMacierz();
-                ArrayList<Integer> list = new ArrayList<>();
-                int y=20;
+
                 if(graf != null) {
-                    list = (ArrayList<Integer>) Algorytmy.znajdźCyklEulera(graf);
+                    ArrayList<Integer> list ;
+                    list = (ArrayList<Integer>) new ArrayList<Integer>( Algorytmy.znajdźCyklEulera(graf));
                     g.drawString(list.toString(),20,20);
                 }
                 else
                     g.drawString("Nie wczytano grafu",20,20);
             }catch (RuntimeException ex){
                 Graphics2D g =(Graphics2D) panel.getGraphics();
+                panel.clean();
                 g.drawString(ex.toString(),20,20);
+                System.out.println(ex);
             }
         }
+        if(e.getSource() == znajdźSkładowe)
+        {
+            try {
+                panel.clean();
+                Graphics2D g =(Graphics2D) panel.getGraphics();
+
+                if(graf != null) {
+                    int[] list;
+                    list =  Algorytmy.znajdźSkładowe(graf);
+                    g.drawString(Arrays.toString(list),20,20);
+                }
+                else
+                    g.drawString("Nie wczytano grafu",20,20);
+            }catch (RuntimeException ex){
+                Graphics2D g =(Graphics2D) panel.getGraphics();
+                panel.clean();
+                g.drawString(ex.toString(),20,20);
+                System.out.println(ex);
+            }
+        }
+
 
     }
 }
