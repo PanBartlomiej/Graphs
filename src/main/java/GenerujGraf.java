@@ -6,7 +6,7 @@ public class GenerujGraf {
     {
 
         if(l>(n-1)*n/2.0)
-            throw new RuntimeException();
+            throw new RuntimeException("Za dużo");
         double p = ((double)l/((double)(n*(n-1))/2.0));
         int[][] tab = new int[n][n];
         for(int i=0; i<n; i++)
